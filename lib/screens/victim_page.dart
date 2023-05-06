@@ -51,12 +51,19 @@ class _VictimPageState extends State<VictimPage> {
                       color: HexColor('222B45'),
                     ),
                   ),
-                  Text("Yeni Talep Ekle",
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        color: HexColor('222B45'),
-                      ))
+                  TextButton(
+                    style: TextButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    )),
+                    onPressed: () {},
+                    child: Text("Yeni Talep Ekle",
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          color: HexColor('222B45'),
+                        )),
+                  )
                 ],
               ),
               Container(
