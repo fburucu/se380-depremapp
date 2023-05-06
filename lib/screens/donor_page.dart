@@ -1,19 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:depremapp/screens/donor_page.dart';
-import 'package:depremapp/screens/victim_page.dart';
+import 'package:depremapp/components/request_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class DonorPage extends StatefulWidget {
+  const DonorPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<DonorPage> createState() => _DonorPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _DonorPageState extends State<DonorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,29 +36,17 @@ class _HomePageState extends State<HomePage> {
       body: Container(
           margin: EdgeInsets.only(top: 25),
           padding: EdgeInsets.all(16),
-          child: Center(
-              child: Column(
+          child: Column(
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => VictimPage()),
-                  );
-                },
-                child: Text("Depremzede"),
+              Container(
+                margin: const EdgeInsets.only(top: 16),
+                child: Wrap(
+                  runSpacing: 12,
+                  children: const [RequestContainer()],
+                ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DonorPage()),
-                  );
-                },
-                child: Text("Bağışçı"),
-              )
             ],
-          ))),
+          )),
     );
   }
 }
