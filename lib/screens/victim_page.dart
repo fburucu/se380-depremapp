@@ -51,7 +51,7 @@ class _VictimPageState extends State<VictimPage> {
                       color: HexColor('222B45'),
                     ),
                   ),
-                  Text("Tümünü Gör",
+                  Text("Yeni Talep Ekle",
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
                         fontSize: 16,
