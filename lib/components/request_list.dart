@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'request.dart';
 
 class TalepList extends StatelessWidget{
   const TalepList({super.key});
@@ -21,7 +22,7 @@ class TalepList extends StatelessWidget{
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                    'Talepler',
+                    'İhtiyaç Talepleri',
                       style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w500,
                       fontSize: 24,
@@ -29,6 +30,17 @@ class TalepList extends StatelessWidget{
                   ),
                 )
               ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 16),
+              child: Wrap(
+                runSpacing: 12,
+                children: const [
+                  Talep(),
+                  Talep(),
+                  Talep(),
+                ],
+              ),
             ),
           ],
         ),
