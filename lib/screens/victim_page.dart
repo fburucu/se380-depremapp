@@ -42,7 +42,11 @@ class _VictimPageState extends State<VictimPage> {
                         shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     )),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Talep()),
+                      );
+                    },
                     child: Text("Yeni Talep Ekle",
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,

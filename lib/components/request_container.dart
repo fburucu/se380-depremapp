@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'request_list.dart';
 
 class RequestContainer extends StatelessWidget {
   const RequestContainer({super.key});
@@ -44,7 +45,11 @@ class RequestContainer extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8))),
               child: Text("İhtiyaç Talepleri",
                   style: TextStyle(color: HexColor("2E3A59"))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TalepList())
+                );
+              },
             )
           ],
         ),
