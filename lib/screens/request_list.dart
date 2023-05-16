@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'request.dart';
+import '../components/request.dart';
 
 class TalepList extends StatelessWidget{
   const TalepList({super.key});
