@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:depremapp/components/static/header_component.dart';
+import 'package:depremapp/screens/new_request_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +45,7 @@ class _VictimPageState extends State<VictimPage> {
                     )),
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Talep()),
+                          MaterialPageRoute(builder: (context) => NewRequest()),
                       );
                     },
                     child: Text("Yeni Talep Ekle",
