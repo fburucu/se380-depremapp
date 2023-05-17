@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../components/request.dart';
 
 class NewRequest extends StatefulWidget {
   const NewRequest({super.key});
@@ -19,40 +18,41 @@ class _NewRequestState extends State<NewRequest> {
       backgroundColor: HexColor("F2F1F6"),
       appBar: Header(),
       body: Container(
-        margin: EdgeInsets.only(top:25),
-        padding: EdgeInsets.all(16),
+        margin: const EdgeInsets.only(top: 25),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Yeni Talep",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 24,
-                      color: HexColor('222B45'),
-                    ),
-                  ),
-                ],
-            ),
-            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 70,
+                Text(
+                  "Yeni Talep",
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                    color: HexColor('222B45'),
+                  ),
                 ),
-                Text("Ad Soyad",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                  color: HexColor('222B45'),
-                ),
-                )
               ],
             ),
             Row(
               children: [
+                const SizedBox(
+                  height: 70,
+                ),
+                Text(
+                  "Ad Soyad",
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: HexColor('222B45'),
+                  ),
+                )
+              ],
+            ),
+            Row(
+              children: const [
                 SizedBox(
                   width: 350,
                   child: TextField(
@@ -66,7 +66,7 @@ class _NewRequestState extends State<NewRequest> {
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 70,
                 ),
                 Text(
@@ -80,7 +80,7 @@ class _NewRequestState extends State<NewRequest> {
               ],
             ),
             Row(
-              children: [
+              children: const [
                 SizedBox(
                   width: 350,
                   child: TextField(
@@ -94,11 +94,11 @@ class _NewRequestState extends State<NewRequest> {
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 70,
                 ),
                 Text(
-                    'Adres',
+                  'Adres',
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
@@ -112,7 +112,7 @@ class _NewRequestState extends State<NewRequest> {
                 SizedBox(
                   width: 350,
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Adresiniz',
                     ),
@@ -122,7 +122,7 @@ class _NewRequestState extends State<NewRequest> {
             ),
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 70,
                 ),
                 Text(
@@ -140,7 +140,7 @@ class _NewRequestState extends State<NewRequest> {
                 SizedBox(
                   width: 350,
                   child: TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'İhtiyaçlarınız..',
                     ),
@@ -151,7 +151,7 @@ class _NewRequestState extends State<NewRequest> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 70,
                 ),
                 SizedBox(
@@ -162,14 +162,15 @@ class _NewRequestState extends State<NewRequest> {
                     ),
                     onPressed: () {
                       Navigator.push(
-                       context,
-                        MaterialPageRoute(builder: (context) => VictimPage()),
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const VictimPage()),
                       );
                     },
-                    child: Text("İptal"),
+                    child: const Text("İptal"),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 SizedBox(
@@ -181,10 +182,11 @@ class _NewRequestState extends State<NewRequest> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => VictimPage()),
+                        MaterialPageRoute(
+                            builder: (context) => const VictimPage()),
                       );
                     },
-                    child: Text("Kayıt Et"),
+                    child: const Text("Kayıt Et"),
                   ),
                 ),
               ],
@@ -193,7 +195,5 @@ class _NewRequestState extends State<NewRequest> {
         ),
       ),
     );
-
   }
-
 }
