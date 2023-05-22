@@ -97,52 +97,58 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    constraints: BoxConstraints(minWidth: 200, maxWidth: 350),
-                    padding: EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: const [
-                            Text(
-                              'İhtiyaçlarını Gönder',
-                            ),
-                            Icon(
-                              Icons.arrow_forward_rounded,
-                              size: 30,
-                            ),
-                          ],
+              Container(
+                padding: EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Colors.white,
+                ),
+                child: Wrap(
+                  runSpacing: 10,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'İhtiyaçlarını Gönder',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 16),
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              'İhtiyaç Listesini Göster',
-                            ),
-                            Icon(
-                              Icons.arrow_forward_rounded,
-                            ),
-                          ],
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                          size: 30,
                         ),
-                        Row(
-                          children: const [
-                            Text('Payment link'),
-                            Icon(
-                              Icons.arrow_forward_rounded,
-                            ),
-                          ],
-                        )
                       ],
                     ),
-                  ),
-                ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'İhtiyaç Listesini Göster',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 16),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Payment link',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600, fontSize: 16),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               )
             ],
           ))),
