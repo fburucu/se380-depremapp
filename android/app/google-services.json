@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "381885622348",
+    "project_id": "depremyardim-a4151",
+    "storage_bucket": "depremyardim-a4151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381885622348:android:77d8be7ada9ea4d0792ce9",
+        "android_client_info": {
+          "package_name": "com.example.depremapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381885622348-t52easb87l1hke2rotke3523sirlqaq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdgoF5maIA-3dcV4yD420JvrcANdCtJ3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381885622348-t52easb87l1hke2rotke3523sirlqaq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
