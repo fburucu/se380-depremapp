@@ -1,15 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:depremapp/model/earthquake.dart';
 import 'package:flutter/material.dart';
 
 class EarthQuakeItem extends StatelessWidget {
-  final String city, date;
-  final double magnitude;
-  const EarthQuakeItem(
-      {super.key,
-      required this.city,
-      required this.date,
-      required this.magnitude});
+  final EarthQuake earthQuake;
+  const EarthQuakeItem({super.key, required this.earthQuake});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +24,7 @@ class EarthQuakeItem extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text(
-                magnitude.toString(),
+                earthQuake.Magnitude,
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),
               ),
               Wrap(
@@ -36,11 +32,11 @@ class EarthQuakeItem extends StatelessWidget {
                 direction: Axis.vertical,
                 children: [
                   Text(
-                    city,
+                    earthQuake.Region,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                   ),
                   Text(
-                    date,
+                    earthQuake.Time,
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.black54,

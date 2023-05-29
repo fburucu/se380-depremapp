@@ -3,24 +3,49 @@
 import 'package:depremapp/components/earthquake_list_item.dart';
 import 'package:depremapp/components/request_container.dart';
 import 'package:depremapp/components/static/header_component.dart';
+import 'package:depremapp/service/earthquake_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DonorPage extends StatefulWidget {
+class DonorPage extends StatelessWidget {
   const DonorPage({super.key});
 
   @override
-  State<DonorPage> createState() => _DonorPageState();
-}
-
-class _DonorPageState extends State<DonorPage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("F2F1F6"),
-      appBar: Header(),
-      body: SingleChildScrollView(
+        backgroundColor: HexColor("F2F1F6"),
+        appBar: Header(),
+        body: _DonorPage());
+  }
+}
+
+class _DonorPage extends ConsumerWidget {
+  const _DonorPage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncearthquakes = ref.watch(earthquakeProvider);
+
+    final earthquakes = asyncearthquakes.value;
+
+    if (!(asyncearthquakes.hasValue && earthquakes != null)) {
+      if (asyncearthquakes.isLoading) {
+        return Center(child: CircularProgressIndicator());
+      } else {
+        return Center(
+          child: Text("Bir hata oluştu"),
+        );
+      }
+    }
+
+    return RefreshIndicator(
+      onRefresh: () async {
+        await ref.refresh(earthquakeProvider.future);
+      },
+      child: SingleChildScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
         child: Container(
             margin: EdgeInsets.only(top: 25),
             padding: EdgeInsets.all(16),
@@ -42,40 +67,11 @@ class _DonorPageState extends State<DonorPage> {
                     color: HexColor('222B45'),
                   ),
                 ),
-                EarthQuakeItem(
-                  city: "İzmir",
-                  date: "13:26 Bugün",
-                  magnitude: 7.4,
-                ),
-                EarthQuakeItem(
-                  city: "Adana",
-                  date: "13:24 Bugün",
-                  magnitude: 1.4,
-                ),
-                EarthQuakeItem(
-                  city: "İstanbul",
-                  date: "13:26 Bugün",
-                  magnitude: 2.1,
-                ),
-                EarthQuakeItem(
-                  city: "Çanakkale",
-                  date: "13:26 Bugün",
-                  magnitude: 2.6,
-                ),
-                EarthQuakeItem(
-                  city: "İzmir",
-                  date: "13:26 Bugün",
-                  magnitude: 7.4,
-                ),
-                EarthQuakeItem(
-                  city: "İzmir",
-                  date: "13:26 Bugün",
-                  magnitude: 7.4,
-                ),
-                EarthQuakeItem(
-                  city: "İzmir",
-                  date: "13:26 Bugün",
-                  magnitude: 7.4,
+                Wrap(
+                  runSpacing: 10,
+                  children: earthquakes
+                      .map((e) => EarthQuakeItem(earthQuake: e))
+                      .toList(),
                 )
               ],
             )),
