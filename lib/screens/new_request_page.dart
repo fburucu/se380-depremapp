@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:depremapp/main.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../components/request.dart';
 
 class NewRequest extends StatefulWidget {
   const NewRequest({super.key});
@@ -12,188 +17,207 @@ class NewRequest extends StatefulWidget {
 }
 
 class _NewRequestState extends State<NewRequest> {
+
+
+  final victimNameController=TextEditingController();
+  final victimPhoneController=TextEditingController();
+  final victimAddressController=TextEditingController();
+  final victimNeedsController=TextEditingController();
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: HexColor("F2F1F6"),
       appBar: Header(),
       body: Container(
-        margin: const EdgeInsets.only(top: 25),
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  "Yeni Talep",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 24,
-                    color: HexColor('222B45'),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  "Ad Soyad",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: HexColor('222B45'),
-                  ),
-                )
-              ],
-            ),
-            Row(
-              children: const [
-                SizedBox(
-                  width: 350,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Adınız Soyadınız',
+        margin: EdgeInsets.only(top:25),
+        padding: EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Yeni Talep",
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24,
+                        color: HexColor('222B45'),
+                      ),
                     ),
+                  ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 70,
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  'Telefon Numarası',
+                  Text("Ad Soyad",
                   style: GoogleFonts.poppins(
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: HexColor('222B45'),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: const [
-                SizedBox(
-                  width: 350,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Telefon Numaranız',
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 350,
+                    child: TextField(
+                      controller: victimNameController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Adınız Soyadınız',
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  'Adres',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: HexColor('222B45'),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 70,
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 350,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Adresiniz',
+                  Text(
+                    'Telefon Numarası',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: HexColor('222B45'),
                     ),
                   ),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                Text(
-                  'İhtiyaçlarınız',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: HexColor('222B45'),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 350,
-                  child: TextFormField(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'İhtiyaçlarınız..',
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 350,
+                    child: TextField(
+                      controller: victimPhoneController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Telefon Numaranız',
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const SizedBox(
-                  height: 70,
-                ),
-                SizedBox(
-                  width: 100,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pinkAccent,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const VictimPage()),
-                      );
-                    },
-                    child: const Text("İptal"),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 70,
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                SizedBox(
-                  width: 100,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black38,
+                  Text(
+                      'Adres',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: HexColor('222B45'),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const VictimPage()),
-                      );
-                    },
-                    child: const Text("Kayıt Et"),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 350,
+                    child: TextFormField(
+                      controller: victimAddressController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Adresiniz',
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    height: 70,
+                  ),
+                  Text(
+                    'İhtiyaçlarınız',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: HexColor('222B45'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 350,
+                    child: TextFormField(
+                      controller: victimNeedsController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'İhtiyaçlarınız..',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    height: 70,
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pinkAccent,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                         context,
+                          MaterialPageRoute(builder: (context) => VictimPage()),
+                        );
+                      },
+                      child: Text("İptal"),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  SizedBox(
+                    width: 100,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black38,
+                      ),
+                      onPressed: () {
+                        Map<String, dynamic> victims = {
+                          'name': victimNameController.text,
+                          'phone': victimPhoneController.text,
+                          'address': victimAddressController.text,
+                          'needs': victimNeedsController.text,
+                        };
+                        CollectionReference victimsCollection =
+                        FirebaseFirestore.instance.collection('victims');
+                        victimsCollection.add(victims);
+                      },
+                      child: Text("Kayıt Et"),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
+
   }
+
 }

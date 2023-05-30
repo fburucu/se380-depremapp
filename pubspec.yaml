@@ -18,6 +18,8 @@ dependencies:
   firebase_core: ^2.13.0
   flutter_riverpod: ^2.3.6
   http: ^0.13.6
+  firebase_database: ^10.2.1
+  cloud_firestore: ^4.7.1
 
 dev_dependencies:
   flutter_test:
