@@ -24,11 +24,11 @@ class EarthQuakeItem extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text(
-                earthQuake.Magnitude,
+                earthQuake.Magnitude.toString(),
                 style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),
               ),
               Wrap(
-                spacing: -5,
+                spacing: -2,
                 direction: Axis.vertical,
                 children: [
                   Text(
