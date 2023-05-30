@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:depremapp/main.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../components/request.dart';
 
@@ -16,12 +18,12 @@ class NewRequest extends StatefulWidget {
 
 class _NewRequestState extends State<NewRequest> {
 
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   final victimNameController=TextEditingController();
   final victimPhoneController=TextEditingController();
   final victimAddressController=TextEditingController();
   final victimNeedsController=TextEditingController();
+
 
 
   @override
@@ -68,6 +70,7 @@ class _NewRequestState extends State<NewRequest> {
                   SizedBox(
                     width: 350,
                     child: TextField(
+                      controller: victimNameController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Adınız Soyadınız',
@@ -96,6 +99,7 @@ class _NewRequestState extends State<NewRequest> {
                   SizedBox(
                     width: 350,
                     child: TextField(
+                      controller: victimPhoneController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Telefon Numaranız',
@@ -124,6 +128,7 @@ class _NewRequestState extends State<NewRequest> {
                   SizedBox(
                     width: 350,
                     child: TextFormField(
+                      controller: victimAddressController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Adresiniz',
@@ -152,6 +157,7 @@ class _NewRequestState extends State<NewRequest> {
                   SizedBox(
                     width: 350,
                     child: TextFormField(
+                      controller: victimNeedsController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'İhtiyaçlarınız..',
@@ -191,10 +197,15 @@ class _NewRequestState extends State<NewRequest> {
                         backgroundColor: Colors.black38,
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => VictimPage()),
-                        );
+                        Map<String, dynamic> victims = {
+                          'name': victimNameController.text,
+                          'phone': victimPhoneController.text,
+                          'address': victimAddressController.text,
+                          'needs': victimNeedsController.text,
+                        };
+                        CollectionReference victimsCollection =
+                        FirebaseFirestore.instance.collection('victims');
+                        victimsCollection.add(victims);
                       },
                       child: Text("Kayıt Et"),
                     ),
