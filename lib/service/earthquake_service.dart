@@ -32,12 +32,10 @@ class EarthquakeService extends ChangeNotifier {
 
     if (listofMaps is List) {
       print("yes");
-      // var list = await listofMaps.map((e) => EarthQuake.fromJson(e)).toList();
 
-      // print(list);
+      var list = listofMaps.map((e) => EarthQuake.fromJson(e)).toList();
 
-      // var list = listofMaps.map((e) => EarthQuake.fromJson(e)).toList();
-      return [];
+      return list;
     } else {
       return [];
     }
