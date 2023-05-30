@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:depremapp/main.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../components/request.dart';
 
 class NewRequest extends StatefulWidget {
   const NewRequest({super.key});
@@ -17,14 +13,10 @@ class NewRequest extends StatefulWidget {
 }
 
 class _NewRequestState extends State<NewRequest> {
-
-
-  final victimNameController=TextEditingController();
-  final victimPhoneController=TextEditingController();
-  final victimAddressController=TextEditingController();
-  final victimNeedsController=TextEditingController();
-
-
+  final victimNameController = TextEditingController();
+  final victimPhoneController = TextEditingController();
+  final victimAddressController = TextEditingController();
+  final victimNeedsController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,36 +24,37 @@ class _NewRequestState extends State<NewRequest> {
       backgroundColor: HexColor("F2F1F6"),
       appBar: Header(),
       body: Container(
-        margin: EdgeInsets.only(top:25),
+        margin: EdgeInsets.only(top: 25),
         padding: EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Yeni Talep",
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 24,
-                        color: HexColor('222B45'),
-                      ),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Yeni Talep",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      color: HexColor('222B45'),
                     ),
-                  ],
+                  ),
+                ],
               ),
               Row(
                 children: [
                   SizedBox(
                     height: 70,
                   ),
-                  Text("Ad Soyad",
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: HexColor('222B45'),
-                  ),
+                  Text(
+                    "Ad Soyad",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: HexColor('222B45'),
+                    ),
                   )
                 ],
               ),
@@ -114,7 +107,7 @@ class _NewRequestState extends State<NewRequest> {
                     height: 70,
                   ),
                   Text(
-                      'Adres',
+                    'Adres',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w500,
                       fontSize: 14,
@@ -180,7 +173,7 @@ class _NewRequestState extends State<NewRequest> {
                       ),
                       onPressed: () {
                         Navigator.push(
-                         context,
+                          context,
                           MaterialPageRoute(builder: (context) => VictimPage()),
                         );
                       },
@@ -204,7 +197,7 @@ class _NewRequestState extends State<NewRequest> {
                           'needs': victimNeedsController.text,
                         };
                         CollectionReference victimsCollection =
-                        FirebaseFirestore.instance.collection('victims');
+                            FirebaseFirestore.instance.collection('victims');
                         victimsCollection.add(victims);
                       },
                       child: Text("Kayıt Et"),
@@ -217,7 +210,5 @@ class _NewRequestState extends State<NewRequest> {
         ),
       ),
     );
-
   }
-
 }
