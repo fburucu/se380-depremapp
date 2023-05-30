@@ -189,7 +189,7 @@ class _NewRequestState extends State<NewRequest> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black38,
                       ),
-                      onPressed: () {
+                      onPressed: () async {
                         Map<String, dynamic> victims = {
                           'name': victimNameController.text,
                           'phone': victimPhoneController.text,
@@ -198,7 +198,11 @@ class _NewRequestState extends State<NewRequest> {
                         };
                         CollectionReference victimsCollection =
                             FirebaseFirestore.instance.collection('victims');
-                        victimsCollection.add(victims);
+                        var added = await victimsCollection.add(victims);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => VictimPage()),
+                        );
                       },
                       child: Text("Kayıt Et"),
                     ),
