@@ -23,11 +23,11 @@ mixin _$EarthQuake {
   String get ID => throw _privateConstructorUsedError;
   String get MapImage => throw _privateConstructorUsedError;
   String get Time => throw _privateConstructorUsedError;
-  String get Magnitude => throw _privateConstructorUsedError;
+  double get Magnitude => throw _privateConstructorUsedError;
   String get MagnitudeType => throw _privateConstructorUsedError;
   String get Latitude => throw _privateConstructorUsedError;
   String get Longitude => throw _privateConstructorUsedError;
-  String get Depth => throw _privateConstructorUsedError;
+  int get Depth => throw _privateConstructorUsedError;
   String get Region => throw _privateConstructorUsedError;
   String get AM => throw _privateConstructorUsedError;
   String get LastUpdate => throw _privateConstructorUsedError;
@@ -48,11 +48,11 @@ abstract class $EarthQuakeCopyWith<$Res> {
       {String ID,
       String MapImage,
       String Time,
-      String Magnitude,
+      double Magnitude,
       String MagnitudeType,
       String Latitude,
       String Longitude,
-      String Depth,
+      int Depth,
       String Region,
       String AM,
       String LastUpdate});
@@ -99,7 +99,7 @@ class _$EarthQuakeCopyWithImpl<$Res, $Val extends EarthQuake>
       Magnitude: null == Magnitude
           ? _value.Magnitude
           : Magnitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       MagnitudeType: null == MagnitudeType
           ? _value.MagnitudeType
           : MagnitudeType // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ class _$EarthQuakeCopyWithImpl<$Res, $Val extends EarthQuake>
       Depth: null == Depth
           ? _value.Depth
           : Depth // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       Region: null == Region
           ? _value.Region
           : Region // ignore: cast_nullable_to_non_nullable
@@ -144,11 +144,11 @@ abstract class _$$_EarthQuakeCopyWith<$Res>
       {String ID,
       String MapImage,
       String Time,
-      String Magnitude,
+      double Magnitude,
       String MagnitudeType,
       String Latitude,
       String Longitude,
-      String Depth,
+      int Depth,
       String Region,
       String AM,
       String LastUpdate});
@@ -193,7 +193,7 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
       Magnitude: null == Magnitude
           ? _value.Magnitude
           : Magnitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       MagnitudeType: null == MagnitudeType
           ? _value.MagnitudeType
           : MagnitudeType // ignore: cast_nullable_to_non_nullable
@@ -209,7 +209,7 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
       Depth: null == Depth
           ? _value.Depth
           : Depth // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       Region: null == Region
           ? _value.Region
           : Region // ignore: cast_nullable_to_non_nullable
@@ -252,7 +252,7 @@ class _$_EarthQuake implements _EarthQuake {
   @override
   final String Time;
   @override
-  final String Magnitude;
+  final double Magnitude;
   @override
   final String MagnitudeType;
   @override
@@ -260,7 +260,7 @@ class _$_EarthQuake implements _EarthQuake {
   @override
   final String Longitude;
   @override
-  final String Depth;
+  final int Depth;
   @override
   final String Region;
   @override
@@ -321,11 +321,11 @@ abstract class _EarthQuake implements EarthQuake {
       {required final String ID,
       required final String MapImage,
       required final String Time,
-      required final String Magnitude,
+      required final double Magnitude,
       required final String MagnitudeType,
       required final String Latitude,
       required final String Longitude,
-      required final String Depth,
+      required final int Depth,
       required final String Region,
       required final String AM,
       required final String LastUpdate}) = _$_EarthQuake;
@@ -340,7 +340,7 @@ abstract class _EarthQuake implements EarthQuake {
   @override
   String get Time;
   @override
-  String get Magnitude;
+  double get Magnitude;
   @override
   String get MagnitudeType;
   @override
@@ -348,7 +348,7 @@ abstract class _EarthQuake implements EarthQuake {
   @override
   String get Longitude;
   @override
-  String get Depth;
+  int get Depth;
   @override
   String get Region;
   @override
