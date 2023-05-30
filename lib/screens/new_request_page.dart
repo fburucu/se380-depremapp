@@ -18,6 +18,8 @@ class _NewRequestState extends State<NewRequest> {
   final victimAddressController = TextEditingController();
   final victimNeedsController = TextEditingController();
 
+  String errorMessage='';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,29 +192,54 @@ class _NewRequestState extends State<NewRequest> {
                         backgroundColor: Colors.black38,
                       ),
                       onPressed: () async {
-                        Map<String, dynamic> victims = {
-                          'name': victimNameController.text,
-                          'phone': victimPhoneController.text,
-                          'address': victimAddressController.text,
-                          'needs': victimNeedsController.text,
-                        };
-                        CollectionReference victimsCollection =
-                            FirebaseFirestore.instance.collection('victims');
-                        var added = await victimsCollection.add(victims);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => VictimPage()),
-                        );
+                        if (_checkerFields()) {
+                          Map<String, dynamic> victims = {
+                            'name': victimNameController.text,
+                            'phone': victimPhoneController.text,
+                            'address': victimAddressController.text,
+                            'needs': victimNeedsController.text,
+                          };
+                          CollectionReference victimsCollection =
+                          FirebaseFirestore.instance.collection('victims');
+                          var added = await victimsCollection.add(victims);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VictimPage()),
+                          );
+                        }
                       },
                       child: Text("Kayıt Et"),
                     ),
                   ),
                 ],
               ),
+              if (errorMessage.isNotEmpty)
+                Text(
+                  errorMessage,
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Colors.red,
+                  ),
+                )
             ],
           ),
         ),
       ),
     );
+  }
+
+  bool _checkerFields(){
+    if(victimNeedsController.text.isEmpty ||
+        victimAddressController.text.isEmpty ||
+        victimPhoneController.text.isEmpty ||
+        victimNameController.text.isEmpty){
+      setState(() {
+        errorMessage='Lütfen tüm alanları doldurun';
+      });
+      return false;
+    }
+    return true;
   }
 }
