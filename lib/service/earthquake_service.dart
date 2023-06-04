@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-const apiURL = "https://api.berkealp.net/kandilli/index.php?last=10";
+const apiURL = "https://secimharitam.net/deprem/";
 
 final earthquakeserviceProvider =
     ChangeNotifierProvider((ref) => EarthquakeService());
@@ -17,10 +17,10 @@ final earthquakeProvider = FutureProvider((ref) {
 
 class EarthquakeService extends ChangeNotifier {
   Future<List<EarthQuake>> fetchEarthquakes() async {
-    print(apiURL);
+    final response =
+        await http.get(Uri.parse('https://secimharitam.net/deprem/index.php'));
 
-    final response = await http
-        .get(Uri.parse('https://api.berkealp.net/kandilli/index.php?last=10'));
+    print(response);
 
     final listofMaps = jsonDecode(response.body);
 

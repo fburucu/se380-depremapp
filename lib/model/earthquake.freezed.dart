@@ -21,16 +21,13 @@ EarthQuake _$EarthQuakeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$EarthQuake {
   String get ID => throw _privateConstructorUsedError;
-  String get MapImage => throw _privateConstructorUsedError;
   String get Time => throw _privateConstructorUsedError;
   double get Magnitude => throw _privateConstructorUsedError;
-  String get MagnitudeType => throw _privateConstructorUsedError;
-  String get Latitude => throw _privateConstructorUsedError;
-  String get Longitude => throw _privateConstructorUsedError;
+  double get Latitude => throw _privateConstructorUsedError;
+  double get Longitude => throw _privateConstructorUsedError;
   int get Depth => throw _privateConstructorUsedError;
   String get Region => throw _privateConstructorUsedError;
-  String get AM => throw _privateConstructorUsedError;
-  String get LastUpdate => throw _privateConstructorUsedError;
+  String get City => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,16 +43,13 @@ abstract class $EarthQuakeCopyWith<$Res> {
   @useResult
   $Res call(
       {String ID,
-      String MapImage,
       String Time,
       double Magnitude,
-      String MagnitudeType,
-      String Latitude,
-      String Longitude,
+      double Latitude,
+      double Longitude,
       int Depth,
       String Region,
-      String AM,
-      String LastUpdate});
+      String City});
 }
 
 /// @nodoc
@@ -72,25 +66,18 @@ class _$EarthQuakeCopyWithImpl<$Res, $Val extends EarthQuake>
   @override
   $Res call({
     Object? ID = null,
-    Object? MapImage = null,
     Object? Time = null,
     Object? Magnitude = null,
-    Object? MagnitudeType = null,
     Object? Latitude = null,
     Object? Longitude = null,
     Object? Depth = null,
     Object? Region = null,
-    Object? AM = null,
-    Object? LastUpdate = null,
+    Object? City = null,
   }) {
     return _then(_value.copyWith(
       ID: null == ID
           ? _value.ID
           : ID // ignore: cast_nullable_to_non_nullable
-              as String,
-      MapImage: null == MapImage
-          ? _value.MapImage
-          : MapImage // ignore: cast_nullable_to_non_nullable
               as String,
       Time: null == Time
           ? _value.Time
@@ -100,18 +87,14 @@ class _$EarthQuakeCopyWithImpl<$Res, $Val extends EarthQuake>
           ? _value.Magnitude
           : Magnitude // ignore: cast_nullable_to_non_nullable
               as double,
-      MagnitudeType: null == MagnitudeType
-          ? _value.MagnitudeType
-          : MagnitudeType // ignore: cast_nullable_to_non_nullable
-              as String,
       Latitude: null == Latitude
           ? _value.Latitude
           : Latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       Longitude: null == Longitude
           ? _value.Longitude
           : Longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       Depth: null == Depth
           ? _value.Depth
           : Depth // ignore: cast_nullable_to_non_nullable
@@ -120,13 +103,9 @@ class _$EarthQuakeCopyWithImpl<$Res, $Val extends EarthQuake>
           ? _value.Region
           : Region // ignore: cast_nullable_to_non_nullable
               as String,
-      AM: null == AM
-          ? _value.AM
-          : AM // ignore: cast_nullable_to_non_nullable
-              as String,
-      LastUpdate: null == LastUpdate
-          ? _value.LastUpdate
-          : LastUpdate // ignore: cast_nullable_to_non_nullable
+      City: null == City
+          ? _value.City
+          : City // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -142,16 +121,13 @@ abstract class _$$_EarthQuakeCopyWith<$Res>
   @useResult
   $Res call(
       {String ID,
-      String MapImage,
       String Time,
       double Magnitude,
-      String MagnitudeType,
-      String Latitude,
-      String Longitude,
+      double Latitude,
+      double Longitude,
       int Depth,
       String Region,
-      String AM,
-      String LastUpdate});
+      String City});
 }
 
 /// @nodoc
@@ -166,25 +142,18 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ID = null,
-    Object? MapImage = null,
     Object? Time = null,
     Object? Magnitude = null,
-    Object? MagnitudeType = null,
     Object? Latitude = null,
     Object? Longitude = null,
     Object? Depth = null,
     Object? Region = null,
-    Object? AM = null,
-    Object? LastUpdate = null,
+    Object? City = null,
   }) {
     return _then(_$_EarthQuake(
       ID: null == ID
           ? _value.ID
           : ID // ignore: cast_nullable_to_non_nullable
-              as String,
-      MapImage: null == MapImage
-          ? _value.MapImage
-          : MapImage // ignore: cast_nullable_to_non_nullable
               as String,
       Time: null == Time
           ? _value.Time
@@ -194,18 +163,14 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
           ? _value.Magnitude
           : Magnitude // ignore: cast_nullable_to_non_nullable
               as double,
-      MagnitudeType: null == MagnitudeType
-          ? _value.MagnitudeType
-          : MagnitudeType // ignore: cast_nullable_to_non_nullable
-              as String,
       Latitude: null == Latitude
           ? _value.Latitude
           : Latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       Longitude: null == Longitude
           ? _value.Longitude
           : Longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       Depth: null == Depth
           ? _value.Depth
           : Depth // ignore: cast_nullable_to_non_nullable
@@ -214,13 +179,9 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
           ? _value.Region
           : Region // ignore: cast_nullable_to_non_nullable
               as String,
-      AM: null == AM
-          ? _value.AM
-          : AM // ignore: cast_nullable_to_non_nullable
-              as String,
-      LastUpdate: null == LastUpdate
-          ? _value.LastUpdate
-          : LastUpdate // ignore: cast_nullable_to_non_nullable
+      City: null == City
+          ? _value.City
+          : City // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -231,16 +192,13 @@ class __$$_EarthQuakeCopyWithImpl<$Res>
 class _$_EarthQuake implements _EarthQuake {
   const _$_EarthQuake(
       {required this.ID,
-      required this.MapImage,
       required this.Time,
       required this.Magnitude,
-      required this.MagnitudeType,
       required this.Latitude,
       required this.Longitude,
       required this.Depth,
       required this.Region,
-      required this.AM,
-      required this.LastUpdate});
+      required this.City});
 
   factory _$_EarthQuake.fromJson(Map<String, dynamic> json) =>
       _$$_EarthQuakeFromJson(json);
@@ -248,29 +206,23 @@ class _$_EarthQuake implements _EarthQuake {
   @override
   final String ID;
   @override
-  final String MapImage;
-  @override
   final String Time;
   @override
   final double Magnitude;
   @override
-  final String MagnitudeType;
+  final double Latitude;
   @override
-  final String Latitude;
-  @override
-  final String Longitude;
+  final double Longitude;
   @override
   final int Depth;
   @override
   final String Region;
   @override
-  final String AM;
-  @override
-  final String LastUpdate;
+  final String City;
 
   @override
   String toString() {
-    return 'EarthQuake(ID: $ID, MapImage: $MapImage, Time: $Time, Magnitude: $Magnitude, MagnitudeType: $MagnitudeType, Latitude: $Latitude, Longitude: $Longitude, Depth: $Depth, Region: $Region, AM: $AM, LastUpdate: $LastUpdate)';
+    return 'EarthQuake(ID: $ID, Time: $Time, Magnitude: $Magnitude, Latitude: $Latitude, Longitude: $Longitude, Depth: $Depth, Region: $Region, City: $City)';
   }
 
   @override
@@ -279,28 +231,22 @@ class _$_EarthQuake implements _EarthQuake {
         (other.runtimeType == runtimeType &&
             other is _$_EarthQuake &&
             (identical(other.ID, ID) || other.ID == ID) &&
-            (identical(other.MapImage, MapImage) ||
-                other.MapImage == MapImage) &&
             (identical(other.Time, Time) || other.Time == Time) &&
             (identical(other.Magnitude, Magnitude) ||
                 other.Magnitude == Magnitude) &&
-            (identical(other.MagnitudeType, MagnitudeType) ||
-                other.MagnitudeType == MagnitudeType) &&
             (identical(other.Latitude, Latitude) ||
                 other.Latitude == Latitude) &&
             (identical(other.Longitude, Longitude) ||
                 other.Longitude == Longitude) &&
             (identical(other.Depth, Depth) || other.Depth == Depth) &&
             (identical(other.Region, Region) || other.Region == Region) &&
-            (identical(other.AM, AM) || other.AM == AM) &&
-            (identical(other.LastUpdate, LastUpdate) ||
-                other.LastUpdate == LastUpdate));
+            (identical(other.City, City) || other.City == City));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, ID, MapImage, Time, Magnitude,
-      MagnitudeType, Latitude, Longitude, Depth, Region, AM, LastUpdate);
+  int get hashCode => Object.hash(runtimeType, ID, Time, Magnitude, Latitude,
+      Longitude, Depth, Region, City);
 
   @JsonKey(ignore: true)
   @override
@@ -319,16 +265,13 @@ class _$_EarthQuake implements _EarthQuake {
 abstract class _EarthQuake implements EarthQuake {
   const factory _EarthQuake(
       {required final String ID,
-      required final String MapImage,
       required final String Time,
       required final double Magnitude,
-      required final String MagnitudeType,
-      required final String Latitude,
-      required final String Longitude,
+      required final double Latitude,
+      required final double Longitude,
       required final int Depth,
       required final String Region,
-      required final String AM,
-      required final String LastUpdate}) = _$_EarthQuake;
+      required final String City}) = _$_EarthQuake;
 
   factory _EarthQuake.fromJson(Map<String, dynamic> json) =
       _$_EarthQuake.fromJson;
@@ -336,25 +279,19 @@ abstract class _EarthQuake implements EarthQuake {
   @override
   String get ID;
   @override
-  String get MapImage;
-  @override
   String get Time;
   @override
   double get Magnitude;
   @override
-  String get MagnitudeType;
+  double get Latitude;
   @override
-  String get Latitude;
-  @override
-  String get Longitude;
+  double get Longitude;
   @override
   int get Depth;
   @override
   String get Region;
   @override
-  String get AM;
-  @override
-  String get LastUpdate;
+  String get City;
   @override
   @JsonKey(ignore: true)
   _$$_EarthQuakeCopyWith<_$_EarthQuake> get copyWith =>

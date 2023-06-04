@@ -9,29 +9,23 @@ part of 'earthquake.dart';
 _$_EarthQuake _$$_EarthQuakeFromJson(Map<String, dynamic> json) =>
     _$_EarthQuake(
       ID: json['ID'] as String,
-      MapImage: json['MapImage'] as String,
       Time: json['Time'] as String,
       Magnitude: (json['Magnitude'] as num).toDouble(),
-      MagnitudeType: json['MagnitudeType'] as String,
-      Latitude: json['Latitude'] as String,
-      Longitude: json['Longitude'] as String,
+      Latitude: (json['Latitude'] as num).toDouble(),
+      Longitude: (json['Longitude'] as num).toDouble(),
       Depth: json['Depth'] as int,
       Region: json['Region'] as String,
-      AM: json['AM'] as String,
-      LastUpdate: json['LastUpdate'] as String,
+      City: json['City'] as String,
     );
 
 Map<String, dynamic> _$$_EarthQuakeToJson(_$_EarthQuake instance) =>
     <String, dynamic>{
       'ID': instance.ID,
-      'MapImage': instance.MapImage,
       'Time': instance.Time,
       'Magnitude': instance.Magnitude,
-      'MagnitudeType': instance.MagnitudeType,
       'Latitude': instance.Latitude,
       'Longitude': instance.Longitude,
       'Depth': instance.Depth,
       'Region': instance.Region,
-      'AM': instance.AM,
-      'LastUpdate': instance.LastUpdate,
+      'City': instance.City,
     };
