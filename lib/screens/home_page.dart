@@ -2,6 +2,7 @@
 
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:depremapp/screens/donor_page.dart';
+import 'package:depremapp/screens/earthquakes_page.dart';
 import 'package:depremapp/screens/new_request_page.dart';
 import 'package:depremapp/screens/victim_page.dart';
 import 'package:flutter/material.dart';
@@ -170,11 +171,11 @@ class _HomePageState extends State<HomePage> {
                     ),
                     InkWell(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => VictimPage()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EarthQuakes()),
+                        );
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
