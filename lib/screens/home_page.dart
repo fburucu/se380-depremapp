@@ -3,6 +3,7 @@
 import 'package:depremapp/components/static/header_component.dart';
 import 'package:depremapp/screens/donor_page.dart';
 import 'package:depremapp/screens/earthquakes_page.dart';
+import 'package:depremapp/screens/horn_page.dart';
 import 'package:depremapp/screens/new_request_page.dart';
 import 'package:depremapp/screens/victim_page.dart';
 import 'package:flutter/material.dart';
@@ -182,6 +183,31 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             'Son Depremleri Göster',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                color: HexColor("2E3A59")),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_rounded,
+                            size: 30,
+                            color: HexColor("2E3A59"),
+                          ),
+                        ],
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HornPage()),
+                        );
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Düdük Çal',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 16,
