@@ -1,33 +1,60 @@
+import 'package:depremapp/model/earthquake.dart';
 import 'package:depremapp/screens/victim_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:depremapp/components/static/header_component.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class NewRequest extends StatefulWidget {
+import '../service/earthquake_service.dart';
+
+class NewRequest extends ConsumerStatefulWidget {
   const NewRequest({super.key});
 
   @override
-  State<NewRequest> createState() => _NewRequestState();
+  ConsumerState<NewRequest> createState() => _NewRequestState();
 }
 
-class _NewRequestState extends State<NewRequest> {
+class _NewRequestState extends ConsumerState<NewRequest> {
   final victimNameController = TextEditingController();
   final victimPhoneController = TextEditingController();
   final victimAddressController = TextEditingController();
   final victimNeedsController = TextEditingController();
 
-  String errorMessage='';
+  String selectedEarthquake = '';
+
+  String errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
+    final asyncearthquakes = ref.watch(earthquakeProvider);
+
+    final earthquakes = asyncearthquakes.value;
+
+    if (!(asyncearthquakes.hasValue && earthquakes != null)) {
+      if (asyncearthquakes.isLoading) {
+        return Center(
+            child: CircularProgressIndicator(
+          color: HexColor('222B45'),
+        ));
+      } else if (asyncearthquakes.hasError) {
+        return const Center(
+          child: Text("Bir hata oluştu"),
+        );
+      } else {
+        return const Center(
+          child: Text("Bir hata oluştu"),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: HexColor("F2F1F6"),
       appBar: Header(),
       body: Container(
-        margin: EdgeInsets.only(top: 25),
-        padding: EdgeInsets.all(16),
+        margin: const EdgeInsets.only(top: 25),
+        padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -47,7 +74,7 @@ class _NewRequestState extends State<NewRequest> {
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   Text(
@@ -66,7 +93,7 @@ class _NewRequestState extends State<NewRequest> {
                     width: 350,
                     child: TextField(
                       controller: victimNameController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Adınız Soyadınız',
                       ),
@@ -76,7 +103,7 @@ class _NewRequestState extends State<NewRequest> {
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   Text(
@@ -95,7 +122,7 @@ class _NewRequestState extends State<NewRequest> {
                     width: 350,
                     child: TextField(
                       controller: victimPhoneController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Telefon Numaranız',
                       ),
@@ -105,7 +132,7 @@ class _NewRequestState extends State<NewRequest> {
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   Text(
@@ -124,7 +151,7 @@ class _NewRequestState extends State<NewRequest> {
                     width: 350,
                     child: TextFormField(
                       controller: victimAddressController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'Adresiniz',
                       ),
@@ -134,7 +161,7 @@ class _NewRequestState extends State<NewRequest> {
               ),
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   Text(
@@ -153,7 +180,7 @@ class _NewRequestState extends State<NewRequest> {
                     width: 350,
                     child: TextFormField(
                       controller: victimNeedsController,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         labelText: 'İhtiyaçlarınız..',
                       ),
@@ -162,9 +189,45 @@ class _NewRequestState extends State<NewRequest> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const SizedBox(
+                    height: 70,
+                  ),
+                  Text(
+                    'Deprem',
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: HexColor('222B45'),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
                 children: [
                   SizedBox(
+                    width: 350,
+                    child: DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Deprem',
+                        ),
+                        items: earthquakes
+                            .map((e) => DropdownMenuItem(
+                                value: e.ID, child: Text(e.Region)))
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedEarthquake = value!;
+                          });
+                        }),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const SizedBox(
                     height: 70,
                   ),
                   SizedBox(
@@ -176,13 +239,14 @@ class _NewRequestState extends State<NewRequest> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => VictimPage()),
+                          MaterialPageRoute(
+                              builder: (context) => const VictimPage()),
                         );
                       },
-                      child: Text("İptal"),
+                      child: const Text("İptal"),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   SizedBox(
@@ -198,18 +262,21 @@ class _NewRequestState extends State<NewRequest> {
                             'phone': victimPhoneController.text,
                             'address': victimAddressController.text,
                             'needs': victimNeedsController.text,
+                            'earthquake': selectedEarthquake == ""
+                                ? null
+                                : selectedEarthquake,
                           };
                           CollectionReference victimsCollection =
-                          FirebaseFirestore.instance.collection('victims');
+                              FirebaseFirestore.instance.collection('victims');
                           var added = await victimsCollection.add(victims);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VictimPage()),
+                                builder: (context) => const VictimPage()),
                           );
-                        }
+                        } else {}
                       },
-                      child: Text("Kayıt Et"),
+                      child: const Text("Kayıt Et"),
                     ),
                   ),
                 ],
@@ -230,13 +297,13 @@ class _NewRequestState extends State<NewRequest> {
     );
   }
 
-  bool _checkerFields(){
-    if(victimNeedsController.text.isEmpty ||
+  bool _checkerFields() {
+    if (victimNeedsController.text.isEmpty ||
         victimAddressController.text.isEmpty ||
         victimPhoneController.text.isEmpty ||
-        victimNameController.text.isEmpty){
+        victimNameController.text.isEmpty) {
       setState(() {
-        errorMessage='Lütfen tüm alanları doldurun';
+        errorMessage = 'Lütfen tüm alanları doldurun';
       });
       return false;
     }
