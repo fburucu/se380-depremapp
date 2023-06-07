@@ -44,8 +44,9 @@ class _VictimPageState extends State<VictimPage> {
                       borderRadius: BorderRadius.circular(8.0),
                     )),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => NewRequest()),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NewRequest()),
                       );
                     },
                     child: Text("Yeni Talep Ekle",
@@ -62,9 +63,9 @@ class _VictimPageState extends State<VictimPage> {
                 child: Wrap(
                   runSpacing: 12,
                   children: const [
-                    Talep(),
-                    Talep(),
-                    Talep(),
+                    // Talep(),
+                    // Talep(),
+                    // Talep(),
                   ],
                 ),
               ),
