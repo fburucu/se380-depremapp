@@ -8,13 +8,20 @@ import 'package:latlong2/latlong.dart';
 import '../components/static/header_component.dart';
 
 class RequestDetail extends StatefulWidget {
-  const RequestDetail({super.key});
+  final Map request;
+
+  const RequestDetail({super.key, required this.request});
 
   @override
   State<RequestDetail> createState() => _RequestDetailState();
 }
 
 class _RequestDetailState extends State<RequestDetail> {
+  // void initState() {
+
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,14 +38,14 @@ class _RequestDetailState extends State<RequestDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Serhat Gündoğdu",
+                        widget.request['name'],
                         style: TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w600,
                             color: HexColor("#222B45")),
                       ),
                       Text(
-                        "+90 534 999 98 74",
+                        widget.request['phone'],
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -65,7 +72,7 @@ class _RequestDetailState extends State<RequestDetail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "AAA Mah. Bilmem Ne Sokak. No 19",
+                        widget.request['address'],
                         style: TextStyle(
                             fontWeight: FontWeight.w600, color: Colors.black54),
                       ),
@@ -86,8 +93,7 @@ class _RequestDetailState extends State<RequestDetail> {
                           color: HexColor("#d3d3db"),
                         ),
                         child: SingleChildScrollView(
-                          child: Text(
-                              "Battaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numara Battaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numaraBattaniye, Çadır, Su, Erkek Kıyafet, Kadın Kıyafet, Ayakkabı 36 numara",
+                          child: Text(widget.request['needs'],
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
