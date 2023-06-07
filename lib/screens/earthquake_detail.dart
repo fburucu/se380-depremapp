@@ -1,4 +1,5 @@
 import 'package:depremapp/model/earthquake.dart';
+import 'package:depremapp/screens/request_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hex_color/flutter_hex_color.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -17,8 +18,8 @@ class EarthQuakeDetail extends StatelessWidget {
         appBar: Header(),
         body: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.only(top: 25),
-            padding: EdgeInsets.all(16),
+            margin: const EdgeInsets.only(top: 25),
+            padding: const EdgeInsets.all(16),
             child: Wrap(runSpacing: 8, children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,7 +84,7 @@ class EarthQuakeDetail extends StatelessWidget {
                           point:
                               LatLng(earthQuake.Latitude, earthQuake.Longitude),
                           builder: (BuildContext context) {
-                            return Icon(
+                            return const Icon(
                               Icons.location_on,
                               color: Colors.red,
                             );
@@ -98,12 +99,19 @@ class EarthQuakeDetail extends StatelessWidget {
                 child: TextButton(
                     style: TextButton.styleFrom(
                         backgroundColor: HexColor("222B45"),
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             horizontal: 25.0, vertical: 8.0),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8))),
-                    onPressed: () {},
-                    child: Text(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TalepList(
+                                    earthQuakeId: earthQuake.ID,
+                                  )));
+                    },
+                    child: const Text(
                       'Bu Depreme Ait Talepleri Görüntüle',
                       style: TextStyle(color: Colors.white),
                     )),
