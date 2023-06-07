@@ -22,7 +22,7 @@ class DonorPage extends StatelessWidget {
 }
 
 class _DonorPage extends ConsumerWidget {
-  const _DonorPage({super.key});
+  const _DonorPage();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
