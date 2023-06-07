@@ -87,19 +87,12 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                   )
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    child: TextField(
-                      controller: victimNameController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Adınız Soyadınız',
-                      ),
-                    ),
-                  ),
-                ],
+              TextField(
+                controller: victimNameController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Adınız Soyadınız',
+                ),
               ),
               Row(
                 children: [
@@ -116,19 +109,12 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    child: TextField(
-                      controller: victimPhoneController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Telefon Numaranız',
-                      ),
-                    ),
-                  ),
-                ],
+              TextField(
+                controller: victimPhoneController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Telefon Numaranız',
+                ),
               ),
               Row(
                 children: [
@@ -145,19 +131,12 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    child: TextFormField(
-                      controller: victimAddressController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Adresiniz',
-                      ),
-                    ),
-                  )
-                ],
+              TextFormField(
+                controller: victimAddressController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Adresiniz',
+                ),
               ),
               Row(
                 children: [
@@ -174,19 +153,12 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    child: TextFormField(
-                      controller: victimNeedsController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'İhtiyaçlarınız..',
-                      ),
-                    ),
-                  ),
-                ],
+              TextFormField(
+                controller: victimNeedsController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'İhtiyaçlarınız..',
+                ),
               ),
               Row(
                 children: [
@@ -203,27 +175,20 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 350,
-                    child: DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Deprem',
-                        ),
-                        items: earthquakes
-                            .map((e) => DropdownMenuItem(
-                                value: e.ID, child: Text(e.Region)))
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            selectedEarthquake = value!;
-                          });
-                        }),
+              DropdownButtonFormField<String>(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Deprem',
                   ),
-                ],
-              ),
+                  items: earthquakes
+                      .map((e) =>
+                          DropdownMenuItem(value: e.ID, child: Text(e.Region)))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedEarthquake = value!;
+                    });
+                  }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -269,7 +234,7 @@ class _NewRequestState extends ConsumerState<NewRequest> {
                           CollectionReference victimsCollection =
                               FirebaseFirestore.instance.collection('victims');
                           var added = await victimsCollection.add(victims);
-                          Navigator.push(
+                          Navigator.pop(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const VictimPage()),
