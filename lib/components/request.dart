@@ -2,14 +2,20 @@ import 'package:depremapp/screens/request_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class Talep extends StatelessWidget {
-  const Talep({super.key});
+  final Map talep;
+
+  const Talep(this.talep, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const RequestDetail()));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RequestDetail(
+                      request: talep,
+                    )));
       },
       child: SizedBox(
         width: double.infinity,
@@ -24,9 +30,13 @@ class Talep extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text("Talep"),
-                Icon(
+              children: [
+                Text(
+                  talep['name'],
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 14),
+                ),
+                const Icon(
                   Icons.arrow_forward_rounded,
                   size: 32,
                 )
